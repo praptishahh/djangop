@@ -1,0 +1,21 @@
+{% extends "header_footer.html" %}
+{% load static %}
+{% block content %}
+
+                            <h3 class="text-body text-bold mb-1">Reset password</h3>
+                                    <div class="text-manatee">If you forgot your password, well, then we’ll email you instructions to
+                                        reset your password.</div>
+                                    <form class="form-horizontal" method="POST" action="/send_otp/">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <div class="input-label">
+                                                <label>Email</label>
+                                            </div>
+                                            <input type="email" class="form-control" placeholder="Enter your email address or username" name="email">
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="button" class="submit-btn">SEND RESET LINK</button>
+                                        </div>
+                                    </form>
+                                    <a href="login.html" class="login-back">Return to login</a>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "header_footer.html" %}
+{% load static %}
+{% block content %}
+                    <form>
+                        <div class="form-group">
+                            <div class="input-label">
+                                <label>Email or Username</label>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Enter your email address or username" name="email">
+                        </div>
+                        <div class="form-group">
+                            <div class="input-label">
+                                <label>Passcode</label>
+                                <a href="/passcode-reset/">Forgot Code?</a>
+                            </div>
+                            <input type="password" class="form-control" placeholder="Enter your passcode" name="password">
+                        </div>
+                        <div class="form-group">
+                            <button type="button" class="submit-btn">SIGN IN</button>
+                        </div>
+                    </form>
+{% endblock %}
