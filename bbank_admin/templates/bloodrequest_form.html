@@ -1,0 +1,54 @@
+{% extends "header_footer.html" %}
+{% load static %}
+{% block content %}
+
+<h3 class="text-22 text-midnight text-bold mb-4">Request-blood Form</h3>
+                                    <form>
+                                         <div class="form-group">
+                                            <div class="input-label">
+                                                <label>Request Id</label>
+                                            </div>
+                                            <input type="text" class="form-control" value="" name="req_id">
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-label">
+                                                <label>Receiver Id</label>
+                                            </div>
+                                            <input type="text" class="form-control" value="" name="r_id">
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-label">
+                                                <label>Hospital Id</label>
+                                            </div>
+                                            <input type="text" class="form-control" value="" name="h_id">
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-label">
+                                                <label>Bloodbank Id</label>
+                                            </div>
+                                            <input type="text" class="form-control" value="" name="b_id">
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-label">
+                                                <label>Blood-Group Id</label>
+                                            </div>
+                                            <input type="text" class="form-control" value="" name="bgrp_id">
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-label">
+                                                <label>Request Status</label>
+                                            </div>
+                                            <input type="text" class="form-control" value="" name="r_status">
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-label">
+                                                <label>Quantity</label>
+                                            </div>
+                                            <input type="number" class="form-control" value="" name="r_qty">
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="submit-btn">SUBMIT FORM</button>
+                                        </div>
+                                    </form>
+
+{% endblock %}

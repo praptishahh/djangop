@@ -1,0 +1,67 @@
+{% extends "header_footer.html" %}
+{% load static %}
+{% block content %}
+
+<h3 class="text-22 text-midnight text-bold mb-4">Form Inputs</h3>
+                                    <form>
+                                        <div class="form-group">
+                                            <div class="input-label">
+                                                <label>Event ID</label>
+                                            </div>
+                                            <input type="text" class="form-control" value="" name="e_id">
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-label">
+                                                <label>Event Name</label>
+                                            </div>
+                                            <input type="text" class="form-control" value="" name="e_name">
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-label">
+                                                <label>Event Date</label>
+                                            </div>
+                                            <input type="date" class="form-control" value="" name="e_date">
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-label">
+                                                <label>Bloodbank Id</label>
+                                            </div>
+                                            <input type="text" class="form-control" value="" name="b_id">
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-label">
+                                                <label>Event Description</label>
+                                            </div>
+                                            <input type="text" class="form-control" value="" name="e_des">
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-label">
+                                                <label>Event Image</label>
+                                            </div>
+                                            <input type="text" class="form-control" value="" name="e_img">
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-label">
+                                                <label>Event Location</label>
+                                            </div>
+                                            <input type="text" class="form-control" value="" name="e_loc">
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-label">
+                                                <label>Hospital Id</label>
+                                            </div>
+                                            <input type="text" class="form-control" value="" name="h_id">
+                                        </div>
+                                         <div class="form-group">
+                                            <div class="input-label">
+                                                <label>Area Id</label>
+                                            </div>
+                                            <input type="text" class="form-control" value="" name="a_id">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <button type="submit" class="submit-btn">SUBMIT FORM</button>
+                                        </div>
+                                    </form>
+
+{% endblock %}

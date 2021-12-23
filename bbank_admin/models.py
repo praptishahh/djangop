@@ -173,6 +173,20 @@ class Admin(models.Model):
     admin_password = models.CharField(max_length=15)
     otp = models.CharField(max_length=10, null=True)
     otp_used = models.IntegerField()
+    is_admin = models.IntegerField()
+
+
 
     class Meta:
         db_table="admin"
+
+class Feedback(models.Model):
+    f_id = models.AutoField(primary_key=True)
+    d_id = models.ForeignKey(Donor, on_delete=models.CASCADE)
+    receiver_id = models.ForeignKey(Receiver, on_delete=models.CASCADE)
+    feedback_b=models.CharField(max_length=200)
+    f_date = models.DateTimeField()
+    b_id = models.ForeignKey(Bloodbank, on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = "bloodbank_feedback"

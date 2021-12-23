@@ -1,0 +1,49 @@
+{% extends "header_footer.html" %}
+{% load static %}
+{% block content %}
+
+<h3 class="text-22 text-midnight text-bold mb-4">Van Form</h3>
+                                    <form>
+                                         <div class="form-group">
+                                            <div class="input-label">
+                                                <label>Van Id</label>
+                                            </div>
+                                            <input type="number" class="form-control" value="" name="v_id">
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-label">
+                                                <label>Van Number</label>
+                                            </div>
+                                            <input type="text" class="form-control" value="" name="van_num">
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-label">
+                                                <label>Van Time</label>
+                                            </div>
+                                            <input type="datetime-local" class="form-control" value="" name="v_time">
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-label">
+                                                <label>Van Address</label>
+                                            </div>
+                                             <textarea class="form-control" id="textarea" rows="5" name="v_add"></textarea>
+                                        </div>
+                                         <div class="form-group">
+                                            <div class="input-label">
+                                                <label>Description</label>
+                                            </div>
+                                            <input type="number" class="form-control" value="" name="v_des">
+                                        </div>
+                                         <div class="form-group">
+                                            <div class="input-label">
+                                                <label>Area Id</label>
+                                            </div>
+                                            <input type="number" class="form-control" value="" name="a_id">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <button type="submit" class="submit-btn">SUBMIT FORM</button>
+                                        </div>
+                                    </form>
+
+{% endblock %}

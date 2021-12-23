@@ -1,0 +1,43 @@
+{% extends "header_footer.html" %}
+{% load static %}
+{% block content %}
+
+<h3 class="text-22 text-midnight text-bold mb-4">Gallery Form</h3>
+                                    <form>
+                                         <div class="form-group">
+                                            <div class="input-label">
+                                                <label>Gallery Id</label>
+                                            </div>
+                                            <input type="text" class="form-control" value="" name="g_id">
+                                        </div>
+                                         <div class="form-group">
+                                            <div class="input-label">
+                                                <label>Bloodbank Id</label>
+                                            </div>
+                                            <input type="text" class="form-control" value="" name="b_id">
+                                        </div>
+                                         <div class="form-group">
+                                            <div class="input-label">
+                                                <label>Hospital Id</label>
+                                            </div>
+                                            <input type="text" class="form-control" value="" name="h_id">
+                                        </div>
+                                         <div class="form-group">
+                                            <div class="input-label">
+                                                <label>Image Path</label>
+                                            </div>
+                                            <input type="text" class="form-control" value="" name="path">
+                                        </div>
+                                         <div class="form-group">
+                                            <div class="input-label">
+                                                <label>Event Id</label>
+                                            </div>
+                                            <input type="text" class="form-control" value="" name="e_id">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <button type="submit" class="submit-btn">SUBMIT FORM</button>
+                                        </div>
+                                    </form>
+
+{% endblock %}

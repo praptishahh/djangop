@@ -1,0 +1,50 @@
+{% extends "header_footer.html" %}
+{% load static %}
+{% block content %}
+
+<h3 class="text-22 text-midnight text-bold mb-4">Form Inputs</h3>
+                                    <form>
+                                        <div class="form-group">
+                                            <div class="input-label">
+                                                <label>Feedback Id</label>
+                                            </div>
+                                            <input type="text" class="form-control" value="" name="f_id">
+                                        </div>
+                                         <div class="form-group">
+                                            <div class="input-label">
+                                                <label>Donor Id</label>
+                                            </div>
+                                            <input type="text" class="form-control" value="" name="d_id">
+                                        </div>
+                                         <div class="form-group">
+                                              <div class="input-label">
+                                                <label>Receiver Id</label>
+                                            </div>
+                                            <input type="text" class="form-control" value="" name="r_id">
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-label">
+                                                <label>Bloodbank Id</label>
+                                            </div>
+                                            <input type="text" class="form-control" value="" name="b_id">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="input-label">
+                                                <label>Feedback</label>
+                                            </div>
+                                             <textarea class="form-control" id="textarea" rows="5" name="feedback_b"></textarea>
+                                        </div>
+                                         <div class="form-group">
+                                            <div class="input-label">
+                                                <label>Feedback Date</label>
+                                            </div>
+                                            <input type="date" class="form-control" value="" name="f_date">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <button type="submit" class="submit-btn">SUBMIT FORM</button>
+                                        </div>
+                                    </form>
+
+{% endblock %}

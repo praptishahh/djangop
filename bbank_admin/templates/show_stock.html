@@ -1,4 +1,4 @@
-{% extends "header_footer.html" %}
+{% extends "admin_header.html" %}
 {% load static %}
 {% block content %}
 <div class="breadcrumbs-wrap">
@@ -6,7 +6,7 @@
         <div class="row align-items-center">
             <div class="col-sm-4 col-12">
                 <div class="breadcrumbs-area">
-                    <h1>AREA</h1>
+                    <h1>BLOOD STOCK</h1>
                 </div>
             </div>
         </div>
@@ -15,27 +15,28 @@
 <div class="container-fluid">
     <div class="card component-table">
         <div class="card-body">
-            <h3 class="text-body text-center text-md-left text-22 text-bold mb-4">Area Table</h3>
+            <h3 class="text-body text-center text-md-left text-22 text-bold mb-4"></h3>
             <div class="table-responsive">
-                <h3><a href="\area_form\">Insert new records</a> </h3>
+                <h3><a href="\bloodstock_form\">Insert new records</a> </h3>
                 <table id="Area-Table" class="table table-bordered">
                     <thead>
                     <tr>
-                        <th>AREA_ID</th>
-                        <th>AREA_NAME</th>
-                        <th>PINCODE</th>
+                        <th>Bloos-stock Id</th>
+                        <th>Blood stock</th>
+                        <th>Bloodbank Id</th>
+                        <th>Blood0group ID</th>
                         <th>ACTION</th>
-                        <th>ACTION</th>
+
                     </tr>
                     </thead>
                     <tbody>
-                    {% for data in areas %}
+                    {% for data in stocks %}
                     <tr>
-                        <td>{{ data.area_id }}</td>
-                        <td>{{ data.area_name }}</td>
-                        <td>{{ data.pincode }}</td>
-                        <td><a href = "/delete/{{ data.area_id }}">Delete</a></td>
-                        <td><a href = "/update_area/{{ data.area_id }}">Update</a></td>
+                        <td>{{ data.stock_id }}</td>
+                        <td>{{ data.b_stock }}</td>
+                        <td>{{ data.b_id }}</td>
+                        <td>{{ data.bloodgrp_id}}</td>
+                        <td><a href = "/delete/{{ data.stock_id }}">Delete</a></td>
                     </tr>
                     {% endfor %}
                     </tfoot>

@@ -8,6 +8,9 @@ from bbank_admin.models import Blood_stock
 from bbank_admin.models import Appointment
 from bbank_admin.models import Request_blood
 from bbank_admin.models import Event
+from bbank_admin.models import Gallery
+from bbank_admin.models import Van
+from bbank_admin.models import Feedback
 from django import forms
 
 
@@ -20,7 +23,7 @@ from django import forms
 class AreaForm(forms.ModelForm):
     class Meta:
         model = Area
-        fields = ["area_id", "area_name", "pincode"]
+        fields = ["area_name", "pincode"]
 
 
 class Blood_grpForm(forms.ModelForm):
@@ -73,3 +76,19 @@ class EventForm(forms.ModelForm):
     class Meta:
         model = Event
         fields = ["event_id", "e_name", 'e_date', 'b_id', 'e_des', 'e_img', 'e_location', 'h_id', 'area_id']
+
+class VanForm(forms.ModelForm):
+    class Meta:
+        model = Van
+        fields = ["van_id", "v_datetime", "v_add", "area_id", "description"]
+
+
+class GalleryForm(forms.ModelForm):
+    class Meta:
+        model = Gallery
+        fields = ["b_id", "h_id", "img_path", "event_id"]
+
+class FeedbackForm(forms.ModelForm):
+    class Meta:
+        model = Feedback
+        fields = ["f_id","d_id", "receiver_id", "feedback_b", "f_date", "b_id"]
