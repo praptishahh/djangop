@@ -51,4 +51,5 @@ urlpatterns = [
     path('show_van/', views.show_van),
     path('show_gallery/', views.show_gallery),
     path('show_feedback/', views.show_feedback),
+    path('dashboard/',views.index)
 ]

@@ -271,3 +271,11 @@ def set_password(request):
 
     else:
         return redirect("/passcode-reset")
+
+
+def index(request):
+    don=Donor.objects.filter().count()
+    rec=Receiver.objects.filter().count()
+    bb=Bloodbank.objects.filter().count()
+    hos=Hospitals.objects.filter().count()
+    return render(request,"dashboard.html",{'don':don,'rec':rec,'bb':bb,'hos':hos})
