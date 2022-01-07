@@ -11,13 +11,8 @@ from bbank_admin.models import Event
 from bbank_admin.models import Gallery
 from bbank_admin.models import Van
 from bbank_admin.models import Feedback
+from bbank_admin.models import Admin
 from django import forms
-
-
-#class UserForm(forms.ModelForm):
- #   class Meta:
-  #      model = User
-   #     fields = ["u_id", "u_name", "u_email", "u_contact", "u_pwd", "otp", "otp_used", "area_id", "is_admin"]
 
 
 class AreaForm(forms.ModelForm):
@@ -35,13 +30,15 @@ class Blood_grpForm(forms.ModelForm):
 class DonorForm(forms.ModelForm):
     class Meta:
         model = Donor
-        fields = ["d_id", "first_name", "last_name", "bloodgrp_id", "Gender", "email", "dob", "donor_weight", "contact_no", "id_proof", "home_number", "address", "state", "username", "password", "area_id"]
+        fields = ["d_id", "first_name", "last_name", "bloodgrp_id", "Gender", "email", "dob", "donor_weight",
+                  "contact_no", "id_proof", "home_number", "address", "state", "username", "password", "area_id"]
 
 
 class ReceiverForm(forms.ModelForm):
     class Meta:
         model = Receiver
-        fields = ["receiver_id", "first_name", "last_name", "bloodgrp_id", "Gender", "email", "dob", "donor_weight", "contact_no", "id_proof", "home_number", "address", "state", "username", "password", "area_id"]
+        fields = ["receiver_id", "first_name", "last_name", "bloodgrp_id", "Gender", "email", "dob", "donor_weight",
+                  "contact_no", "id_proof", "home_number", "address", "state", "username", "password", "area_id"]
 
 
 class BloodbankForm(forms.ModelForm):
@@ -55,10 +52,12 @@ class HospitalsForm(forms.ModelForm):
         model = Hospitals
         fields = ["h_id", "h_name", "h_address", "h_email", "h_pwd", "h_contact", "area_id"]
 
+
 class Blood_stockForm(forms.ModelForm):
     class Meta:
         model = Blood_stock
         fields = ["stock_id", "bloodgrp_id", "b_stock", "b_id"]
+
 
 class AppointmentForm(forms.ModelForm):
     class Meta:
@@ -77,6 +76,7 @@ class EventForm(forms.ModelForm):
         model = Event
         fields = ["event_id", "e_name", 'e_date', 'b_id', 'e_des', 'e_img', 'e_location', 'h_id', 'area_id']
 
+
 class VanForm(forms.ModelForm):
     class Meta:
         model = Van
@@ -88,7 +88,14 @@ class GalleryForm(forms.ModelForm):
         model = Gallery
         fields = ["b_id", "h_id", "img_path", "event_id"]
 
+
 class FeedbackForm(forms.ModelForm):
     class Meta:
         model = Feedback
-        fields = ["f_id","d_id", "receiver_id", "feedback_b", "f_date", "b_id"]
+        fields = ["f_id", "d_id", "receiver_id", "feedback_b", "f_date", "b_id"]
+
+
+class AdminForm(forms.ModelForm):
+    class Meta:
+        model = Admin
+        fields = ["admin_fname", "admin_lname", "admin_email", "admin_contact", "admin_dob", "admin_gender"]

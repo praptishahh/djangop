@@ -22,6 +22,7 @@ from bbank_admin.models import Event
 from bbank_admin.models import Feedback
 from bbank_admin.models import Gallery
 from bbank_admin.models import Van
+from bbank_admin.forms import AdminForm
 import random
 import sys
 from django.conf import settings
@@ -130,6 +131,7 @@ def stock_form(request):
 def van_form(request):
     return render(request, "vanscheduling_form.html")
 
+
 def insert_area(request):
     if request.method == "POST":
         form = AreaForm(request.POST)
@@ -144,10 +146,12 @@ def insert_area(request):
         form = AreaForm()
     return render(request, 'area_form.html', {'form': form})
 
+
 def destroy_area(request, area_id):
-    area = Area.objects.get(area_id = area_id)
+    area = Area.objects.get(area_id=area_id)
     area.delete()
     return redirect("/show_area")
+
 
 def update_area(request, id):
     area = Area.objects.get(area_id=id)
@@ -156,6 +160,7 @@ def update_area(request, id):
         form.save()
         return redirect("/show_area")
     return render(request, 'edit_area.html', {'area': area})
+
 
 def select_area(request, id):
     area = Area.objects.get(area_id=id)
@@ -176,10 +181,12 @@ def insert_bloodgrp(request):
         form = Blood_grpForm()
     return render(request, 'bloodgrp_form.html', {'form': form})
 
+
 def destroy_bloodgrp(request, bloodgrp_id):
-    bgrp = Blood_grp.objects.get(bloodgrp_id = bloodgrp_id)
+    bgrp = Blood_grp.objects.get(bloodgrp_id=bloodgrp_id)
     bgrp.delete()
     return redirect("/show_bgrp")
+
 
 def insert_stock(request):
     temp = Blood_grp.objects.all()
@@ -197,16 +204,18 @@ def insert_stock(request):
         form = Blood_stockForm()
     return render(request, 'bloodstock_form.html', {'form': form, 'temp': temp, 'flag': flag})
 
+
 def destroy_stock(request, stock_id):
-    stock = Blood_stock.objects.get(stock_id = stock_id)
+    stock = Blood_stock.objects.get(stock_id=stock_id)
     stock.delete()
     return redirect("/show_stock")
 
 
 def login(request):
     if request.method == "POST":
-        email = request.POST["email"]
-        password = request.POST["password"]
+
+        email = request.POST.get("admin_email")
+        password = request.POST.get("admin_password")
         val = Admin.objects.filter(admin_email=email, admin_password=password, is_admin=1).count()
         print("------------------", email, "-----------------", password)
         if val == 1:
@@ -214,6 +223,8 @@ def login(request):
             for item in data:
                 request.session['a_email'] = item.admin_email
                 request.session['a_pw'] = item.admin_password
+                request.session['a_id'] = item.admin_id
+                return redirect('/dashboard/')
         else:
             messages.error(request, "Invalid user name and password")
             return redirect('/login')
@@ -227,12 +238,12 @@ def forgot(request):
 
 def send_otp(request):
     otp1 = random.randint(10000, 99999)
-    e = request.POST['email']
+    e = request.POST.get('admin_email')
 
     request.session['temail'] = e
-
+    print("===EMAILLLL===", e)
     obj = Admin.objects.filter(admin_email=e).count()
-
+    print("===OBJECTTTTTTT==", obj)
     if obj == 1:
         val = Admin.objects.filter(admin_email=e).update(otp=otp1, otp_used=0)
 
@@ -243,21 +254,21 @@ def send_otp(request):
 
         send_mail(subject, message, email_from, recipient_list)
 
-        return render(request, 'set_password.html')
+    return render(request, 'set_password.html')
 
 
-def set_password(request):
+def reset(request):
     if request.method == "POST":
 
-        T_otp = request.POST['otp']
-        T_pass = request.POST['admin_password']
-        T_cpass = request.POST['cpass']
+        T_otp = request.POST.get('otp')
+        T_pass = request.POST.get('admin_password')
+        T_cpass = request.POST.get('cpass')
 
         if T_pass == T_cpass:
-
+            print("=====PASSWORDDDDDDDDDDDDDDD=====", T_pass, T_cpass)
             e = request.session['temail']
             val = Admin.objects.filter(admin_email=e, otp=T_otp, otp_used=0).count()
-
+            print("===========", val)
             if val == 1:
                 Admin.objects.filter(admin_email=e).update(otp_used=1, admin_password=T_pass)
                 return redirect("/login")
@@ -274,8 +285,31 @@ def set_password(request):
 
 
 def index(request):
-    don=Donor.objects.filter().count()
-    rec=Receiver.objects.filter().count()
-    bb=Bloodbank.objects.filter().count()
-    hos=Hospitals.objects.filter().count()
-    return render(request,"dashboard.html",{'don':don,'rec':rec,'bb':bb,'hos':hos})
+    don = Donor.objects.filter().count()
+    rec = Receiver.objects.filter().count()
+    bb = Bloodbank.objects.filter().count()
+    hos = Hospitals.objects.filter().count()
+    return render(request, "dashboard.html", {'don': don, 'rec': rec, 'bb': bb, 'hos': hos})
+
+
+def edit_admin_profile(request):
+    email = request.session['a_email']
+    password = request.session['a_pw']
+    id = request.session['a_id']
+    admins = Admin.objects.get(admin_id=id)
+    dob = admins.admin_dob
+    print("=========", dob)
+
+    dob = dob.strftime('%Y-%m-%d')
+    if request.method == 'POST':
+       
+        val = Admin.objects.filter(admin_email=email, admin_password=password, admin_id=id).count()
+        print("======", val)
+        if val == 1:
+            admins = Admin.objects.get(admin_id=id)
+            form = AdminForm(request.POST, instance=admins)
+            print("---------", form.errors)
+            if form.is_valid():
+                form.save()
+                return redirect('/dashboard')
+    return render(request, "edit_profile.html", {'details': admins, 'dob': dob})

@@ -167,10 +167,13 @@ class Gallery(models.Model):
 
 class Admin(models.Model):
     admin_id = models.AutoField(primary_key=True)
-    admin_name = models.CharField(max_length=100)
+    admin_fname = models.CharField(max_length=100)
+    admin_lname = models.CharField(max_length=50)
     admin_email = models.EmailField(unique=True)
     admin_contact = models.CharField(max_length=15)
     admin_password = models.CharField(max_length=15)
+    admin_dob = models.DateField()
+    admin_gender = models.BooleanField()
     otp = models.CharField(max_length=10, null=True)
     otp_used = models.IntegerField()
     is_admin = models.IntegerField()

@@ -24,7 +24,7 @@ urlpatterns = [
     path('login/', views.login),
     path('send_otp/', views.send_otp),
     path('passcode-reset/', views.forgot),
-    path('reset/', views.set_password),
+    path('reset/', views.reset),
     path('area_form/', views.insert_area),
     path('delete/<int:area_id>',views.destroy_area),
     path('edit/<int:id>',views.select_area),
@@ -51,5 +51,6 @@ urlpatterns = [
     path('show_van/', views.show_van),
     path('show_gallery/', views.show_gallery),
     path('show_feedback/', views.show_feedback),
-    path('dashboard/',views.index)
+    path('dashboard/',views.index),
+    path('edit_profile/',views.edit_admin_profile)
 ]
